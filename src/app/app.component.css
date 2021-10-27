@@ -1,0 +1,13 @@
+h1 {
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.form {
+  padding: 2em;
+  border: 1px solid black;
+  border-radius: 0.5em;
+}
+
+.center {
+  text-align: center;
+}
