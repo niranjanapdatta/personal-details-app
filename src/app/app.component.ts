@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { countryList } from './countries';
 
 @Component({
   selector: 'app-root',
@@ -17,21 +18,19 @@ export class AppComponent {
 
   regexEmail : string = "^[A-Za-z0-9.]+[@]{1}[A-Za-z0-9]+[.]{1}[A-Za-z0-9.]+$";
 
-  regexPhone : string = "";
+  regexPhone : string = "^((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$";
 
   regexZipCode : string = "[0-9\-]+";
+
+  countries : string[] = countryList;
 
   ngOnInit() {
     this.personalDetails = new FormGroup({
       firstName: new FormControl("", Validators.compose([
         Validators.required, Validators.pattern(this.regexFistName)
       ])), 
-      middleName: new FormControl("", Validators.compose([
-        Validators.pattern(this.regexName)
-      ])), 
-      lastName: new FormControl("", Validators.compose([
-        Validators.pattern(this.regexName)
-      ])), 
+      middleName: new FormControl("", Validators.pattern(this.regexName)), 
+      lastName: new FormControl("", Validators.pattern(this.regexName)), 
       email: new FormControl("", Validators.compose([
         Validators.required, Validators.pattern(this.regexEmail)
       ])),
