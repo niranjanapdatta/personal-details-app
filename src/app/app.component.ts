@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
-import { countryList } from './countries';
+import CountriesJson from '../assets/countries.json';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +22,7 @@ export class AppComponent {
 
   regexZipCode : string = "[0-9\-]+";
 
-  countries : string[] = countryList;
+  countries : string[] = CountriesJson["countries"];
 
   ngOnInit() {
     this.personalDetails = new FormGroup({
