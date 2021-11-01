@@ -11,64 +11,126 @@
       <div class="form">
           <form [formGroup]="personalDetails" (ngSubmit)="onPersonalDetailsFormSubmit(personalDetails.value)">
             <div class="form-row">
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-12">
                 <label for="inputFirstName">First Name</label>
-                <input type="text" class="form-control" id="inputFirstName" placeholder="First Name" formControlName="firstName">
+                <input type="text" class="form-control" id="inputFirstName" placeholder="First Name" formControlName="firstName" [(ngModel)]="firstName" required>
+              </div> 
+              <div *ngIf="personalDetails.controls['firstName'].invalid && (personalDetails.controls['firstName'].dirty || personalDetails.controls['firstName'].touched)" class="alert">
+                <div *ngIf="personalDetails.controls['firstName'].errors.required">
+                  First name is required
+                </div>
+                <div *ngIf="personalDetails.controls['firstName'].errors.pattern">
+                  Invalid first name
+                </div>
               </div>
-              
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-12">
                 <label for="inputMiddleName">Middle Name</label>
                 <input type="text" class="form-control" id="inputLastName" placeholder="Middle Name" formControlName="middleName">
               </div>
-              <div class="form-group col-md-4">
+              <div *ngIf="personalDetails.controls['middleName'].invalid && (personalDetails.controls['middleName'].dirty || personalDetails.controls['middleName'].touched)" class="alert">
+                <div *ngIf="personalDetails.controls['middleName'].errors.pattern">
+                  Invalid middle name
+                </div>
+              </div>
+              <div class="form-group col-md-12">
                 <label for="inputLastName">Last Name</label>
                 <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" formControlName="lastName">
               </div>
+              <div *ngIf="personalDetails.controls['lastName'].invalid && (personalDetails.controls['lastName'].dirty || personalDetails.controls['lastName'].touched)" class="alert">
+                <div *ngIf="personalDetails.controls['lastName'].errors.pattern">
+                  Invalid last name
+                </div>
+              </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-md-4">
-                <label for="inputEmail">Email</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="Email" formControlName="email">
+              <div class="form-group col-md-12">
+                <label for="inputEmail">Email ID</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="Email" formControlName="email" required>
               </div>
-              <div class="form-group col-md-4">
+              <div *ngIf="personalDetails.controls['email'].invalid && (personalDetails.controls['email'].dirty || personalDetails.controls['email'].touched)" class="alert">
+                <div *ngIf="personalDetails.controls['email'].errors.required">
+                  Email ID is required
+                </div>
+                <div *ngIf="personalDetails.controls['email'].errors.pattern">
+                  Invalid email id
+                </div>
+              </div>
+              <div class="form-group col-md-12">
                 <label for="inputPhone">Phone</label>
-                <input type="text" class="form-control" id="inputPhone" placeholder="Phone" formControlName="phone">
+                <input type="text" class="form-control" id="inputPhone" placeholder="Phone" formControlName="phone" required>
               </div>
-              <div class="form-group col-md-4">
+              <div *ngIf="personalDetails.controls['phone'].invalid && (personalDetails.controls['phone'].dirty || personalDetails.controls['phone'].touched)" class="alert">
+                <div *ngIf="personalDetails.controls['phone'].errors.required">
+                  Phone is required
+                </div>
+                <div *ngIf="personalDetails.controls['phone'].errors.pattern">
+                  Invalid phone
+                </div>
+              </div>
+              <div class="form-group col-md-12">
                 <label for="inputDateOfBirth">Date of Birth</label>
-                <input type="date" class="form-control" id="inputDateOfBirth" formControlName="dateOfBirth">
+                <input type="date" class="form-control" id="inputDateOfBirth" formControlName="dateOfBirth" required>
+              </div>
+              <div *ngIf="personalDetails.controls['dateOfBirth'].invalid && (personalDetails.controls['dateOfBirth'].dirty || personalDetails.controls['dateOfBirth'].touched)" class="alert">
+                <div *ngIf="personalDetails.controls['dateOfBirth'].errors.required">
+                  Date of birth is required
+                </div>
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-12">
                 <label for="inputAddressLine1">Address Line 1</label>
-                <input type="text" class="form-control" id="inputAddressLine1" placeholder="Address Line 1" formControlName="addressLine1">
+                <input type="text" class="form-control" id="inputAddressLine1" placeholder="Address Line 1" formControlName="addressLine1" required>
               </div>
-              <div class="form-group col-md-6">
+              <div *ngIf="personalDetails.controls['addressLine1'].invalid && (personalDetails.controls['addressLine1'].dirty || personalDetails.controls['addressLine1'].touched)" class="alert">
+                <div *ngIf="personalDetails.controls['addressLine1'].errors.required">
+                  Address line 1 is required
+                </div>
+              </div>
+              <div class="form-group col-md-12">
                 <label for="inputAddressLine2">Address Line 2</label>
                 <input type="text" class="form-control" id="inputAddressLine2" placeholder="Address Line 2" formControlName="addressLine2">
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-12">
                 <label for="inputCity">City</label>
-                <input type="text" class="form-control" id="inputCity" placeholder="City" formControlName="city">
+                <input type="text" class="form-control" id="inputCity" placeholder="City" formControlName="city" required>
               </div>
-              <div class="form-group col-md-2">
-                <label for="inputZIPCode">ZIP Code</label>
+              <div *ngIf="personalDetails.controls['city'].invalid && (personalDetails.controls['city'].dirty || personalDetails.controls['city'].touched)" class="alert">
+                <div *ngIf="personalDetails.controls['city'].errors.required">
+                  City is required
+                </div>
+              </div>
+              <div class="form-group col-md-12">
+                <label for="inputZIPCode">ZIP Code/ PIN</label>
                 <input type="text" class="form-control" id="inputZIPCode" placeholder="ZIP Code" formControlName="zipCode">
               </div>
-              <div class="form-group col-md-3">
-                <label for="inputState">State</label>
-                <input type="text" class="form-control" id="inputState" placeholder="State" formControlName="state">
+              <div *ngIf="personalDetails.controls['zipCode'].invalid && (personalDetails.controls['zipCode'].dirty || personalDetails.controls['zipCode'].touched)" class="alert">
+                <div *ngIf="personalDetails.controls['zipCode'].errors.pattern">
+                  Invalid ZIP code/ PIN
+                </div>
               </div>
-              <div class="form-group col-md-3">
+              <div class="form-group col-md-12">
+                <label for="inputState">State</label>
+                <input type="text" class="form-control" id="inputState" placeholder="State" formControlName="state" required>
+              </div>
+              <div *ngIf="personalDetails.controls['state'].invalid && (personalDetails.controls['state'].dirty || personalDetails.controls['state'].touched)" class="alert">
+                <div *ngIf="personalDetails.controls['state'].errors.required">
+                  State is required
+                </div>
+              </div>
+              <div class="form-group col-md-12">
                 <label for="inputCountry">Country</label>
                 <select id="inputCountry" class="form-control" formControlName="country">
-                  <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+                  <option *ngFor="let country of countries" [value]="country" required>{{ country }}</option>
                 </select>
               </div>
-
+              <div *ngIf="personalDetails.controls['country'].invalid && (personalDetails.controls['country'].dirty || personalDetails.controls['country'].touched)" class="alert">
+                <div *ngIf="personalDetails.controls['country'].errors.required">
+                  Country is required
+                </div>
+              </div>
             </div>
             <div class="center">
             <button class="btn btn-primary" [disabled]="!personalDetails.valid">Submit</button>

@@ -12,9 +12,9 @@ export class AppComponent {
 
   personalDetails : any;
 
-  regexFistName : string = "^[A-Za-z]+$";
+  regexFistName : string = "^[A-Za-z ]+$";
 
-  regexName : string = "^[A-Za-z]*$";
+  regexName : string = "^[A-Za-z ]*$";
 
   regexEmail : string = "^[A-Za-z0-9.]+[@]{1}[A-Za-z0-9]+[.]{1}[A-Za-z0-9.]+$";
 
@@ -24,26 +24,22 @@ export class AppComponent {
 
   countries : string[] = CountriesJson["countries"];
 
+  firstName : string = "";
+
   ngOnInit() {
     this.personalDetails = new FormGroup({
-      firstName: new FormControl("", Validators.compose([
-        Validators.required, Validators.pattern(this.regexFistName)
-      ])), 
+      firstName: new FormControl("", Validators.pattern(this.regexFistName)), 
       middleName: new FormControl("", Validators.pattern(this.regexName)), 
       lastName: new FormControl("", Validators.pattern(this.regexName)), 
-      email: new FormControl("", Validators.compose([
-        Validators.required, Validators.pattern(this.regexEmail)
-      ])),
-      phone: new FormControl("", Validators.compose([
-        Validators.required, Validators.pattern(this.regexPhone)
-      ])),
-      dateOfBirth: new FormControl("", Validators.required),
-      addressLine1: new FormControl("", Validators.required),
+      email: new FormControl("", Validators.pattern(this.regexEmail)),
+      phone: new FormControl("", Validators.pattern(this.regexPhone)),
+      dateOfBirth: new FormControl(""),
+      addressLine1: new FormControl(""),
       addressLine2: new FormControl(""),
-      city: new FormControl("", Validators.required),
+      city: new FormControl(""),
       zipCode: new FormControl("", Validators.pattern(this.regexZipCode)),
-      state: new FormControl("", Validators.required),
-      country: new FormControl("", Validators.required)
+      state: new FormControl(""),
+      country: new FormControl("")
     });
   }
 
